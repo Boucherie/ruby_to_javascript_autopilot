@@ -41,11 +41,13 @@ function fillUpCar() {
 }
 
 function getGasDisplay(gasAmount) {
-  return console.log(gasAmount +'%'); 
+  return console.log(gasAmount +'%');
 }
 
-function drive() {
-
+function drive(car, cityDistance) {
+  if (car.gas < cityDistance) {
+    return fillUpCar(car);
+  }
 }
 
 function dropOffPassengers() {
