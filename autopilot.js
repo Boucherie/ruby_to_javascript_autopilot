@@ -35,11 +35,13 @@ if (car.city === 'Toronto') {
 }
 
 function fillUpCar() {
-
+  var oldGas = car.gas;
+  car.gas = 100;
+  return console.log('Filled up to ' + car.gas + 'on gas from ' + getGasDisplay(oldGas) + '.');
 }
 
-function getGasDisplay() {
-
+function getGasDisplay(gasAmount) {
+  return console.log(gasAmount +'%'); 
 }
 
 function drive() {
