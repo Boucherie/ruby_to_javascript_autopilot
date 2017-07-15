@@ -22,7 +22,7 @@ function pickUpPassenger(car) {
   return console.log('Picked up passenger. Car now has ' + car.passengers + ' passengers.');
 }
 
-
+pickUpPassenger(getNewCar);
 
 function getDestination(car) {
 if (car.city === 'Toronto') {
@@ -53,12 +53,28 @@ function drive(car, cityDistance) {
   return console.log('Drove to ' + car.city + '.  Remaining gas: ' + getGasDisplay(car.gas) + '.');
 }
 
-function dropOffPassengers() {
-
+function dropOffPassengers(car) {
+  var previousPassengers = car.passengers;
+  console.log('Dropped off ' + previousPassengers + ' passengers.');
+  return car.passengers = 0;
 }
 
-function act() {
+// dropOffPassengers(getNewCar);
 
+function act() {
+  distanceBetweenCities = 50;
+  if (car.gas < 20) {
+    return fillUpCar(car);
+  }else if (car.passengers < 3) {
+  pickUpPassenger(car);
+  }else {
+    if (car.gas < distanceBetweenCities) {
+      return fillUpCar(car);
+    };
+    var droveTo = drive(car, distanceBetweenCities);
+    var passengerDropped = dropOffPassengers(car);
+    return droveTo + passengerDropped;
+  };
 }
 
 function commandFleet() {
