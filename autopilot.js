@@ -6,20 +6,20 @@ function getNewCar() {
   };
 }
 
-console.log(getNewCar);
-var enterprise = [];
+// console.log(getNewCar);
 
-function addCar(fleet, newCar) {
-  fleet.push(newCar); //need to pass this in
-  console.log('Adding new car to fleet. Fleet size is now ' + fleet.length );
+
+function addCar(cars, newCar) {
+  cars.push(newCar); //need to pass this in
+  console.log('Adding new car to fleet. Fleet size is now ' + cars.length );
 }
-addCar(enterprise, 'Honda');
+// addCar(enterprise, 'Honda');
 
 
 function pickUpPassenger(car) {
   car.passengers += 1;
-  car.gas -= 50;
-  return console.log('Picked up passenger. Car now has ' + car.passengers + ' passengers.');
+  car.gas -= 10;
+  return 'Picked up passenger. Car now has ' + car.passengers + ' passengers.';
 }
 
 pickUpPassenger(getNewCar);
@@ -61,7 +61,7 @@ function dropOffPassengers(car) {
 
 // dropOffPassengers(getNewCar);
 
-function act() {
+function act(car) {
   distanceBetweenCities = 50;
   if (car.gas < 20) {
     return fillUpCar(car);
@@ -77,10 +77,21 @@ function act() {
   };
 }
 
-function commandFleet() {
-
+function commandFleet(cars, numDays) {
+  for (var i = 0; i < cars.length; i++) {
+    var action = act(cars[i])
+    console.log('Car ' + (i + 1) + ':' + action);
+  }
+  return console.log('---');
 }
 
-function addOneCarPerDay() {
-
+function addOneCarPerDay(cars, numDays) {
+  for (var i = 0; i < numDays; numDays--) {
+    var newCar = getNewCar;
+    return addCar(cars, newCar);
+    commandFleet(cars);
+  }
 }
+
+var cars = [];
+addOneCarPerDay(cars, 10);
